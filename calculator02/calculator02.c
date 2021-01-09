@@ -24,16 +24,47 @@ void result(Data* dat) {
         dat->res = dat->num1 / dat->num2;
         break;
     default:
-        dat->res = 123;
+        printf("올바르지 않은 선택입니다. \n결과값을 출력 할 수 없습니다. \n");
         break;
     }
 
 }
 
+void testFunc2(Data* dat)
+{
+    result(dat);
+    printf("결과 : %g \n", dat->res);
+}
+
+
+void testFunc(Data* dat)
+{
+
+    switch (dat->sel) {
+    case 1:
+        testFunc2(dat);
+       break;
+    case 2:
+        testFunc2(dat);
+        break;
+    case 3:
+        testFunc2(dat);
+        break;
+    case 4:
+        testFunc2(dat);
+        break;
+    default:
+        printf("올바르지 않은 선택입니다. \n결과값을 출력 할 수 없습니다. \n");
+        break;
+    }
+}
+
+
 
 
 int main(void) {
     Data dat;
+    Data* pDat;
 
     printf("첫번째 숫자 : ");
     scanf_s("%lf", &dat.num1);
@@ -46,25 +77,9 @@ int main(void) {
     printf("연산 선택 : ");
     scanf_s("%d", &dat.sel);
 
+    pDat = &dat;
 
-    if (dat.sel == 1) {
-        result(&dat);
-        printf("결과 : %g \n", dat.res); // 참일 경우에 실행될 문장 
-    }
-    else if (dat.sel == 2) {
-        result(&dat);
-        printf("결과 : %g \n", dat.res); // 참일 경우에 실행될 문장 
-    }
-    else if (dat.sel == 3) {
-        result(&dat);
-        printf("결과 : %g \n", dat.res); // 참일 경우에 실행될 문장 
-    }
-    else if (dat.sel == 4) {
-        result(&dat);
-        printf("결과 : %g \n", dat.res); // 참일 경우에 실행될 문장 
-    }
-    else {
-        printf("올바르지 않은 선택입니다. \n결과값을 출력 할 수 없습니다. \n"); // 위의 조건식에 아무것도 해당하지 않을때 실행될 문장 
-    }
+
+    testFunc(pDat);
 
 }
